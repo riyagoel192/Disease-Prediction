@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <title>Home</title> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('styles', filename='css/styles.css') }}"> -->
+	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" href="styles/styling.css" />
+
+
+	<style>
+		
+		.bg {
+  /* The image used */
+  background-image: url("https://www.drugtopics.com/sites/default/files/Heart_165365491.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-repeat: no-repeat;
+  background-size: cover;
+	}
+
+	.loginBox input{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginBox
+{
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	height: 520px;
+	box-sizing: border-box;
+	padding: 19px 40px;
+	background: rgba(0,0,0,.3);
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]
+{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 20px;
+	color: #fff;
+	font-size: 16px;
+}
+
+::placeholder
+{
+	color:rgba(255,255,255,1.4);
+}
+
+.loginBox input[type="submit"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	color:#fff;
+	font-size: 16px;
+	background: #ff267e;
+	cursor: pointer;
+	border-radius: 20px;
+}
+
+.loginBox input[type="submit"]:hover
+{
+	background: #efed40;
+	color:#262626;
+}
+
+/*.results{
+	border-radius: 15px 50px;
+    background: #345fe4;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;
+}*/
+
+
+
+	</style>
+</head>
+<body class="bg">
+
+	<header>
+		<center>
+		<div class="container">
+		
+		<h2><b>Heart Disease Prediction System Using ML Technique</b></h2>
+	</div>
+		</center>
+	</header>
+
+	<div class="ml-container">
+		
+		<div class="loginBox">
+		<form action="/predict" method="POST">
+	
+			<input type="text" name="chest pain type (CP)" placeholder="Chest Pain Type (0-3)" required="required"/>
+			<br/>
+			<br/>
+			<input type="text" name="cholestoral " placeholder="Cholestrol Value (126-564)" required="required"/>
+			<br/>
+			<br/>
+			<input type="text" name="maximum heart rate achieved" placeholder="Maximum Heart Rate Achieved (71-202)" required="required"/>
+			<br/>
+			<br/>
+			<input type="text" name="ST depression" placeholder="ST depression (0-6.2)" required="required"/>
+			<br/>
+			<br/>
+			<input type="text" name="slope of the peak" placeholder="Slope of the Peak ST Segment (0-2)" required="required"/>
+			<br/>
+			<br/>
+			<input type="text" name="major vessels (0-3) " placeholder="No. of Vessels (0-3) " required="required"/>
+			<br/>
+			<br/>
+			<input type="text" name="thal(3 = normal; 6 = fixed defect; 7 = reversable defect)" placeholder="Thal Value"/>
+
+			<br/>
+			<br/>
+			
+			<!-- <input type="submit" name="submit" value="Predict"> -->
+
+			<button type="submit" class="btn btn-primary btn-block btn-large" style="margin-left: 60px;height: 40px;width: 200px;border-radius: 10px;">Predict</button>
+		
+	</form>
+		</div>
+	</div>
+
+		 <p style="color:blue;font-size:20;text-align: center;"><b> Estimated Results For Above Values</b></p> 
+		 <div class="results">
+			<center>
+			{% if prediction == 1%}
+			<h4 style="color:green;">Positive Disease</h4>
+			{% elif prediction == 0%}
+			<h4 style="color:red;">Negative Disease</h4>
+			{% endif %}
+			</center>
+		</div> 
+
+</body>
+</html>
